@@ -1,0 +1,1 @@
+<h1>This is the tips page</h1>

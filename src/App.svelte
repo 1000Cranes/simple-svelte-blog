@@ -1,61 +1,56 @@
 <script>
-	export let name;
-	let currentPage = 'home';
+	import NavBar from './components/navbar.svelte';
+	import MainRouter from './components/router.svelte';
+	import Footer from './components/footer.svelte';
+
+	import { currentpage } from './store.js';
 
 	function handleHashChange(event) {
-		currentPage = location.hash.slice(1);
-
+		if (currentpage != undefined) {
+			currentpage.set(location.hash.slice(1));
+		}
 		if (location.hash.slice(1) == "") {
 			window.location.hash = "home"; // Set it to the initial page.
-			currentPage = 'home';
 		}
 	}
 </script>
 
 <style>
-	main > * {
-		display: none;
+	div {
+		background: url("https://www.toptal.com/designers/subtlepatterns/patterns/ignasi_pattern_s.png");
+		height: 100%;
+		width: 100%;
 	}
 
-	main > *:last-child {
-		display: block;
+	header {
+		height: 10em;
+		width: 80%;
+		margin: 0px auto;
 	}
 
-	@keyframes pulse {
-		0% { transform: scale(1) }
-		50% { transform: scale(1.05) }
-		100% { transform: scale(1) }
+	header h1 {
+		text-align: center;
+		line-height: 5em;
 	}
 
-	main > *:target {
-		display: block;
-		animation: pulse 0.5s linear 1;
-	}
-
-	main > *:target ~ * {
-		display: none;
+	header h1 a {
+		padding: 0.5em;
+		border: 5px solid black;
+		color: black;
+		text-transform: uppercase;
+		background: white;
 	}
 </style>
 
 <svelte:window on:hashchange={handleHashChange} />
 
+<div>
+	<header>
+		<h1>
+			<a href="#home">Sample Blog</a>
+		</h1>
+	</header>
+	<NavBar />
+	<MainRouter />
 
-<h1>{currentPage}</h1>
-<nav role="navigation">
-	<ul>
-		<li><a href="#home">home</a></li>
-		<li><a href="#dashboard">dashboard</a></li>
-		<li><a href="#ledgers">ledgers</a></li>
-	</ul>
-</nav>
-<main role="main">
-	<section id="dashboard">
-		Now we see it {name}
-	</section>
-	<section id="ledgers">
-		Now we don't
-	</section>
-	<section id="home">
-		Hello there
-	</section>
-</main>
+</div>
