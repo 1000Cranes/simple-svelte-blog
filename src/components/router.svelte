@@ -1,22 +1,7 @@
 <script>
-    import {
-        currentpage,
-        routes
-    } from '../store.js';
-    import {
-        onMount
-    } from 'svelte';
+    import { currentpage, routes } from '../store.js';
 
-    let Components = [];
-
-    onMount(async () => {
-        $routes.forEach(async function (route, i) {
-            const {
-                default: Component
-            } = await import('./pages/' + route + '.svelte');
-            Components = [...Components, Component];
-        });
-    });
+    import Pages from '../pages/index.svelte';
 </script>
 
 <style>
@@ -63,11 +48,12 @@
 </style>
 
 <main role="main">
-    {#each $routes as route, i}
+	{#each $routes as route}
 		<section id="{route}">
-			{#if $currentpage == route}
-				<svelte:component this={Components[i]} />
-			{/if}
+			<Pages route="{route}" />
 		</section>
 	{/each}
+	<section id="default">
+	
+	</section>
 </main>
