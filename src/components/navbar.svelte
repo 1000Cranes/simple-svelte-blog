@@ -1,7 +1,7 @@
 <script>
     import {
         currentpage,
-        routes
+        pages
     } from '../store.js';
 </script>
 
@@ -54,7 +54,7 @@
 
 <nav role="navigation">
     <ul>
-        {#each $routes as route}
+        {#each $pages as route}
 			<li class:active="{$currentpage === route}"><a href="#{route}">{route}</a></li>
 		{/each}
 	</ul>

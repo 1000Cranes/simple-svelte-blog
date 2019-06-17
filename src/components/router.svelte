@@ -1,7 +1,8 @@
 <script>
-    import { currentpage, routes } from '../store.js';
+    import { currentpage, pages, tips } from '../store.js';
 
     import Pages from '../pages/index.svelte';
+    import Tips from '../pages/tips/index.svelte';
 </script>
 
 <style>
@@ -48,10 +49,15 @@
 </style>
 
 <main role="main">
-	{#each $routes as route}
+	{#each $pages as route}
 		<section id="{route}">
 			<Pages route="{route}" />
 		</section>
+    {/each}
+    {#each $tips as route}
+    <section id="{route}">
+        <Tips route="{route}" />
+    </section>
 	{/each}
 	<section id="default">
 	

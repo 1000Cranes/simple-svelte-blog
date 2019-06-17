@@ -5,6 +5,7 @@
 	import MainRouter from './components/router.svelte';
 	import Footer from './components/footer.svelte';
 	import Header from './components/header.svelte';
+	import CTA from './components/cta.svelte';
 
 	import { currentpage } from './store.js';
 
@@ -28,4 +29,5 @@
 <Header />
 <NavBar />
 <MainRouter />
+<CTA />
 <Footer />
