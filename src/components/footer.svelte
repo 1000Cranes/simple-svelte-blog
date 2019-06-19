@@ -5,6 +5,7 @@
         margin: 0px auto;
         background: white;
         position: relative;
+        clear: both;
     }
 
     footer main {

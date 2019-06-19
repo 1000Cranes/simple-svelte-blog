@@ -21,6 +21,6 @@
 
 <header>
     <h1>
-        <a href="#">The ¯\_(ツ)_/¯ Report</a>
+        <a href="#home">The ¯\_(ツ)_/¯ Report</a>
     </h1>
 </header>
